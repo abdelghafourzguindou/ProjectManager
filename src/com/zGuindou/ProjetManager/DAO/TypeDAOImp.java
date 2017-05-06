@@ -4,26 +4,27 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import com.zGuindou.ProjetManager.DAO.entity.Project;
+import com.zGuindou.ProjetManager.DAO.entity.Type;
+import com.zGuindou.ProjetManager.DAO.entity.Type;
 import com.zGuindou.ProjetManager.utils.HibernateUtil;
 
-public class ProjectDAOImp implements ProjectDAO {
-	
-	Session session = HibernateUtil.openSession();
+public class TypeDAOImp implements TypeDAO {
+
+	Session session = (Session) HibernateUtil.openSession();
 
 	@Override
-	public void add(Project project) {
+	public void add(Type Type) {
 		// TODO Auto-generated method stub
 		session.beginTransaction();
-		session.save(project);
+		session.save(Type);
 		session.getTransaction().commit();
 	}
 
 	@Override
-	public Project edite(Project project) {
+	public Type edite(Type Type) {
 		// TODO Auto-generated method stub
 		session.beginTransaction();
-		Project p = (Project) session.merge(project);
+		Type p = (Type) session.merge(Type);
 		session.getTransaction().commit();
 		return p;
 	}
@@ -32,20 +33,20 @@ public class ProjectDAOImp implements ProjectDAO {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		session.beginTransaction();
-		Project p = findById(id);
+		Type p = findById(id);
 		session.delete(p);
 		session.getTransaction().commit();
 	}
 
 	@Override
-	public List<Project> findAll() {
+	public List<Type> findAll() {
 		// TODO Auto-generated method stub
-		return session.createQuery("select o from Project o").list();
+		return session.createQuery("select o from Type o").list();
 	}
 	
 	@Override
-	public Project findById(Long id) {
-		return (Project)session.get(Project.class, id);
+	public Type findById(Long id) {
+		return (Type)session.get(Type.class, id);
 	}
 
 }

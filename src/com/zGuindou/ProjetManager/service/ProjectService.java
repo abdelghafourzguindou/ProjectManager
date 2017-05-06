@@ -1,9 +1,10 @@
-package com.zGuindou.ProjetManager.DAO;
+package com.zGuindou.ProjetManager.service;
 
-import com.zGuindou.ProjetManager.DAO.entity.Project;
 import java.util.List;
 
-public interface ProjectDAO {
+import com.zGuindou.ProjetManager.DAO.entity.Project;
+
+public interface ProjectService {
 	
 	public void add(Project project);
 	public Project edite(Project project);
