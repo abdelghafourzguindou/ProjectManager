@@ -8,9 +8,14 @@
 </h:head>
 <h:body>
 
-    <h:form>
-
+    <h:form id="forms">
+        <h:messages style="border:1px solid green; color: red; padding: 5px; width: 100%"></h:messages>
         <h3>Add project</h3>
+
+        <h:commandButton value="Show forms" actionListener="#{projectBean.showFormsAction}"></h:commandButton>
+
+        <h:panelGroup id="addProjectForms" rendered="#{projectBean.showForms}">
+        <h:outputText value="#{projectBean.success}" style="color:green; font-weight: bold"></h:outputText>
         <table>
             <tr>
                 <td><h:outputLabel value="Titre : " for="title"></h:outputLabel></td>
@@ -24,7 +29,7 @@
 
             <tr>
                 <td><h:outputLabel value="Budget : " for="budget"></h:outputLabel></td>
-                <td><h:inputText value="#{projectBean.budget}" id="budget"></h:inputText></td>
+                <td><h:inputText required="true" requiredMessage="Budget est obligatoire" value="#{projectBean.budget}" id="budget"></h:inputText></td>
             </tr>
 
             <tr>
@@ -45,11 +50,12 @@
             <tr>
                 <td colspan="2">
                     <h:commandButton value="Save this data in data base" actionListener="#{projectBean.addProject}"></h:commandButton>
+                    <h:commandButton value="Generate description" actionListener="#{projectBean.generateDescription}"></h:commandButton>
+                    <h:commandButton value="Cancel" actionListener="#{projectBean.cancelAction}"></h:commandButton>
                 </td>
             </tr>
-
         </table>
-
+        </h:panelGroup>
     </h:form>
 
 </h:body>

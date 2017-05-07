@@ -9,7 +9,7 @@ import com.zGuindou.ProjetManager.DAO.entity.Project;
 public class ProjectServiceImpl implements ProjectService {
 	
 	ProjectDAO dao = new ProjectDAOImp();
-	
+
 	@Override
 	public void add(Project project) {
 		// TODO Auto-generated method stub

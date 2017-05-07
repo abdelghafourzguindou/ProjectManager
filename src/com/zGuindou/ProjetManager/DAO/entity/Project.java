@@ -2,10 +2,7 @@ package com.zGuindou.ProjetManager.DAO.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Project implements Serializable {
@@ -22,6 +19,16 @@ public class Project implements Serializable {
 	private String description;
 	private Double budget;
 	private String active;
+	private Long typeId;
+
+	public Long getTypeId() {
+		return typeId;
+	}
+
+	public void setTypeId(Long typeId) {
+		this.typeId = typeId;
+	}
+
 	public Long getId() {
 		return id;
 	}
