@@ -21,6 +21,10 @@ public class Project implements Serializable {
 	private String active;
 	private Long typeId;
 
+	@ManyToOne
+	@JoinColumn(name = "typeId", referencedColumnName = "id", insertable = false, updatable = false)
+	private Type type;
+
 	public Long getTypeId() {
 		return typeId;
 	}
@@ -59,6 +63,15 @@ public class Project implements Serializable {
 	public void setActive(String active) {
 		this.active = active;
 	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
 	public Project() {
 		super();
 		// TODO Auto-generated constructor stub

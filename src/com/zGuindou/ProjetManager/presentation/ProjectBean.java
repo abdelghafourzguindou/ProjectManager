@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @ManagedBean
 @RequestScoped
@@ -131,7 +132,6 @@ public class ProjectBean {
 
 	@PostConstruct
 	public void initBean() {
-		showForms = false;
 		//Preparer Type List
 		typeList = new ArrayList<>();
 		typeList.add(new SelectItem("", ""));
@@ -185,6 +185,13 @@ public class ProjectBean {
 
 	public void cancelAction(ActionEvent e) {
 		showForms = false;
+	}
+
+	public void deleteProject(ActionEvent e) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Map<String, String> param = fc.getExternalContext().getRequestParameterMap();
+		projectService.delete(new Long(param.get("id")));
+		projectList = projectService.findAll();
 	}
 
 }
